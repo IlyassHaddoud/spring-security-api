@@ -1,5 +1,6 @@
 package com.demo.api;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,13 @@ public class WebController {
     @GetMapping("private")
     public String privatePage()
     {
-        return "This should be private!!";
+        String principal = SecurityContextHolder.getContext().getAuthentication().getName();
+        return "Welcome to the VIP room ["+principal+"] 💎💵";
     }
+    @GetMapping("admin")
+    public String adminPage()
+    {
+        return "Hello from admin page";
+    }
+
 }
