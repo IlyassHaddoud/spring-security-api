@@ -1,7 +1,6 @@
 package com.demo.api;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Collections;
 
 import jakarta.servlet.FilterChain;
@@ -32,7 +31,7 @@ public class RobotFilter extends OncePerRequestFilter {
         }
 
         String password = request.getHeader("x-robot-password");
-        RobotAuthentication authRequest = RobotAuthentication.unauthenticated(password);
+        var authRequest = RobotAuthentication.unauthenticated(password);
 
         try {
             Authentication authentication = authenticationManager.authenticate(authRequest);

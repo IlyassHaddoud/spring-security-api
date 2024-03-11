@@ -12,8 +12,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.util.List;
-
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
@@ -21,7 +19,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        var authManager = new ProviderManager(new RobotAuthenticationProvider(List.of("beep-boop", "beep-beep")));
+        var authManager = new ProviderManager(new RobotAuthenticationProvider());
         return http
                 .authorizeHttpRequests(
                         request->{
